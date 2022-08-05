@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/lib/jqvmap/jqvmap.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/app.css') }}" type="text/css"/>
+    @toastr_css
   </head>
   <body>
     <div class="be-wrapper be-fixed-sidebar">
@@ -23,7 +24,7 @@
         <div class="container-fluid">
           <div class="be-navbar-header"><a class="navbar-brand" href="index.html"></a>
           </div>
-          <div class="page-title"><span>Dashboard</span></div>
+          <div class="page-title"><span>Admin Paneli</span></div>
           <div class="be-right-navbar">
             <ul class="nav navbar-nav float-right be-user-nav">
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><img src="assets/img/avatar.png" alt="Avatar"><span class="user-name">Túpac Amaru</span></a>
@@ -105,9 +106,11 @@
                   <li class="divider">Menu</li>
                   <li class="active"><a href="index.html"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                   </li>
-                  <li class="parent"><a href="#"><i class="icon mdi mdi-face"></i><span>UI Elements</span></a>
+                  <li class="parent"><a href="#"><i class="icon mdi mdi-face"></i><span>Kategori</span></a>
                     <ul class="sub-menu">
-                      <li><a href="ui-alerts.html">Alerts</a>
+                      <li><a href="{{ route('dashboard.admin.categories.all') }}">Kategori</a>
+                      </li>                                
+                      <li><a href="{{ route('dashboard.admin.categories.create') }}">Kategori Oluştur</a>
                       </li>                                           
                     </ul>
                   </li>                  
@@ -377,6 +380,8 @@
       
       });
     </script>
+    @toastr_js
+    @toastr_render
   </body>
 
 <!-- Mirrored from foxythemes.net/preview/products/beagle/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 May 2022 15:17:10 GMT -->
