@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('author');
             $table->string('author_email');
             $table->string('post_title');
+            $table->string('post_slug');
             $table->string('post_image')->nullable();
             $table->string('post_banner')->nullable();
             $table->text('post_summary');

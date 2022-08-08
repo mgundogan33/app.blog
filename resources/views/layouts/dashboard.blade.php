@@ -16,6 +16,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/lib/jqvmap/jqvmap.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('dashboard/assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/app.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+     <style>
+       .ck-editor__editable{
+         min-height: 200px;
+       }
+     </style>
     @toastr_css
   </head>
   <body>
@@ -106,14 +114,24 @@
                   <li class="divider">Menu</li>
                   <li class="active"><a href="index.html"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                   </li>
-                  <li class="parent"><a href="#"><i class="icon mdi mdi-face"></i><span>Kategori</span></a>
+                  <li class="parent"><a href="#"><i class="icon mdi mdi-view-list-alt"></i><span>Kategori</span></a>
                     <ul class="sub-menu">
                       <li><a href="{{ route('dashboard.admin.categories.all') }}">Kategori</a>
                       </li>                                
                       <li><a href="{{ route('dashboard.admin.categories.create') }}">Kategori Oluştur</a>
                       </li>                                           
                     </ul>
-                  </li>                  
+                  </li> 
+                  
+                  <li class="parent"><a href="#"><i class="icon mdi mdi-view-toc"></i><span>Yazılar</span></a>
+                    <ul class="sub-menu">
+                      <li><a href="{{ route('dashboard.admin.posts.all') }}">Yazılar</a>
+                      </li>                                
+                      <li><a href="{{ route('dashboard.admin.posts.create') }}">Yazı Oluştur</a>
+                      </li>                                           
+                    </ul>
+                  </li>
+                  
                   <li class="divider">Features</li>
                   
                   
@@ -372,6 +390,14 @@
     <script src="{{ asset('dashboard/assets/lib/jquery-ui/jquery-ui.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('dashboard/assets/lib/jqvmap/jquery.vmap.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('dashboard/assets/lib/jqvmap/maps/jquery.vmap.world.js')}}" type="text/javascript"></script>
+    {{-- data table --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    
+    @toastr_js
+    @toastr_render
     <script type="text/javascript">
       $(document).ready(function(){
       	//-initialize the javascript
@@ -380,8 +406,17 @@
       
       });
     </script>
-    @toastr_js
-    @toastr_render
+    @yield('scripts')
+    <script>
+      ClassicEditor
+              .create( document.querySelector( '#editor' ) )
+              .then( editor => {
+                      console.log( editor );
+              } )
+              .catch( error => {
+                      console.error( error );
+              } );
+</script>
   </body>
 
 <!-- Mirrored from foxythemes.net/preview/products/beagle/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 May 2022 15:17:10 GMT -->

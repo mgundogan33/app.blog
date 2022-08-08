@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('cat_name');
+            $table->string('cat_slug');
             $table->text('cat_desc')->nullable();
             $table->tinyInteger('status')->default(0)->comment('0->inactive,1->active');
             $table->timestamps();

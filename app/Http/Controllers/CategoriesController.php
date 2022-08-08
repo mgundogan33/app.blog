@@ -22,10 +22,11 @@ class CategoriesController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'cat_name' => 'required|min:3|max:50',
+            'cat_name' => 'required',
         ]);
-
-        Category::create($request->all());
+        $input = $request->all();
+        $input['cat_slug']=str()->slug($request->cat_name);
+        Category::create($input);
         toastr()->success('Kategori Başarıyla Kaydedildi', 'Kategori');
         return back();
     }
@@ -37,7 +38,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'cat_name' => 'required|min:3|max:50',
+            'cat_name' => 'required',
         ]);
         $category = Category::find($id);
         $category->update($request->all());

@@ -11,7 +11,7 @@
                                 <thead>
                                     <tr>
                                         <th style="width:40%;">İsim</th>
-                                        <th style="width:20%;">Durumu</th>
+                                        <th style="width:20%;">Durum</th>
                                         <th style="width:20%;">Tarih</th>
                                         <th class="actions">İşlemler</th>
                                     </tr>
