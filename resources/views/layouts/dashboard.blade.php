@@ -132,29 +132,13 @@
                     </ul>
                   </li>
                   
-                  <li class="divider">Features</li>
-                  
-                  
-                  <li class="parent"><a href="#"><i class="icon mdi mdi-folder"></i><span>Menu Levels</span></a>
+                  <li class="parent"><a href="#"><i class="icon mdi mdi-settings"></i><span>Ayarlar</span></a>
                     <ul class="sub-menu">
-                      <li class="parent"><a href="#"><i class="icon mdi mdi-undefined"></i><span>Level 1</span></a>
-                        <ul class="sub-menu">
-                          <li><a href="#"><i class="icon mdi mdi-undefined"></i><span>Level 2</span></a>
-                          </li>
-                          <li class="parent"><a href="#"><i class="icon mdi mdi-undefined"></i><span>Level 2</span></a>
-                            <ul class="sub-menu">
-                              <li><a href="#"><i class="icon mdi mdi-undefined"></i><span>Level 3</span></a>
-                              </li>
-                              <li><a href="#"><i class="icon mdi mdi-undefined"></i><span>Level 3</span></a>
-                              </li>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>                      
-                     
+                      <li><a href="{{ route('dashboard.admin.settings.edit') }}">Ayarlar</a>
+                      </li>                                                                                              
                     </ul>
-                  </li>
-                  </li>
+                  </li>              
+                                                
                 </ul>
               </div>
             </div>

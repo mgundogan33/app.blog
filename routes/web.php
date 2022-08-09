@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[WelcomeController::class,'index'])->name('welcome');
 
 Auth::routes();
 
@@ -35,6 +35,12 @@ Route::group(['prefix' => '/dashboard/admin', 'as' => 'dashboard.admin.'], funct
         Route::post('/update/{id}', [PostController::class, 'update'])->name('update');
         Route::get('/status/update/{id}', [PostController::class, 'updateStatus'])->name('status.update');        
         Route::get('/delete/{id}', [PostController::class, 'delete'])->name('delete');
+    });
+
+    Route::group(['prefix' => '/settings', 'as' => 'settings.'], function () {
+        Route::get('/', [SettingsController::class, 'index'])->name('all');
+        Route::get('/edit', [SettingsController::class, 'edit'])->name('edit');
+        Route::post('/update', [SettingsController::class, 'update'])->name('update');
     });
 
 });
