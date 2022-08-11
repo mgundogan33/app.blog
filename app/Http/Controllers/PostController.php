@@ -13,6 +13,7 @@ class PostController extends Controller
 
     public function uploadImage($image, $path, $width, $height)
     {
+
         $new_image_name = date('YmdHis') . $image->getClientOriginalName();
         $resized_image = Image::make($image)->resize($width, $height);
         $resized_image->save($path . $new_image_name, 80);
@@ -120,7 +121,8 @@ class PostController extends Controller
             $post_banner = $this->uploadImage($request->post_banner, $path, 1200, 600);
             $input['post_banner'] = $post_banner;
         }
-        $input['post_slug'] = $request->post_title;
+        $input['post_slug'] = str()->slug($request->post_title);
+        
         $post->update($input);
         toastr()->success('Başarıyla Kaydedildi', 'Yazı');
         return back();
@@ -132,6 +134,13 @@ class PostController extends Controller
         toastr()->success('Başarıyla Silindi', 'Yazı');
         return back();
     }
+
+    public function post($slug)
+    {
+        $post = Post::where('post_slug', $slug)->first();
+        return view('frontend.post', compact('post'));
+    }
+
     public function updateStatus($id)
     {
         $post = Post::find($id);

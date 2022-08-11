@@ -25,6 +25,7 @@ class SettingsController extends Controller
     {
         $settings = Setting::latest()->first();
         return view('dashboard.admin.settings.edit', compact('settings'));
+        
     }
 
 

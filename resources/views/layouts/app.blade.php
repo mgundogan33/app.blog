@@ -24,6 +24,8 @@ $settings = App\Models\Setting::latest()->first();
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="{{ asset('frontend/assets/css/theme-1.css') }}">
 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/monokai-sublime.min.css">
+    @toastr_css
 </head>
 
 <body>
@@ -42,15 +44,19 @@ $settings = App\Models\Setting::latest()->first();
             <div id="navigation" class="collapse navbar-collapse flex-column">
                 <div class="profile-section pt-3 pt-lg-0">
                     <img class="profile-image mb-3 rounded-circle mx-auto"
-                        src="{{ asset('storage/admin/profile/'.$settings->profile_image) }}" alt="image">
+                        src="{{ asset('storage/admin/profile/' . $settings->profile_image) }}" alt="image">
 
                     <div class="bio mb-3">{{ $settings ? $settings->author_bio : '' }}</div>
                     <!--//bio-->
                     <ul class="social-list list-inline py-3 mx-auto">
-                        <li class="list-inline-item"><a href="{{ $settings ? $settings->twitter_link : '#' }}"><i class="fab fa-twitter fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="{{ $settings ? $settings->linkedin_link : '#' }}"><i class="fab fa-stack-overflow fa-fw"></i></a>
-                        <li class="list-inline-item"><a href="{{ $settings ? $settings->github_link : '#' }}"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
-                        <li class="list-inline-item"><a href="{{ $settings ? $settings->stackoverflow_link : '#' }}"><i class="fab fa-github-alt fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ $settings ? $settings->twitter_link : '#' }}"><i
+                                    class="fab fa-twitter fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ $settings ? $settings->linkedin_link : '#' }}"><i
+                                    class="fab fa-stack-overflow fa-fw"></i></a>
+                        <li class="list-inline-item"><a href="{{ $settings ? $settings->github_link : '#' }}"><i
+                                    class="fab fa-linkedin-in fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="{{ $settings ? $settings->stackoverflow_link : '#' }}"><i
+                                    class="fab fa-github-alt fa-fw"></i></a></li>
                         </li>
                         <li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
                     </ul>
@@ -64,11 +70,11 @@ $settings = App\Models\Setting::latest()->first();
                         <a class="nav-link active" href="/"><i class="fas fa-home fa-fw me-2"></i>Ana Sayfa
                             <span class="sr-only">(current)</span></a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="fas fa-user fa-fw me-2"></i>Hakkımda</a>
                     </li>
-                </ul>       
+                </ul>
             </div>
         </nav>
     </header>
@@ -93,8 +99,11 @@ $settings = App\Models\Setting::latest()->first();
     <script src="{{ asset('frontend/assets/plugins/popper.min.js') }}"></script>
     <script src="{{ asset('frontend/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
-
-
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    @jquery
+    @toastr_js
+    @toastr_render
 </body>
 
 </html>
