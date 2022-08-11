@@ -5,7 +5,7 @@
 
         <div class="col-md-12">
             <div class="card card-border-color card-border-color-primary">
-                <div class="card-header card-header-divider">Haber Bülteni Email</div>
+                <div class="card-header card-header-divider">Kayıtlı Email</div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <thead>

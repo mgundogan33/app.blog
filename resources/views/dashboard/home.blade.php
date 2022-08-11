@@ -1,50 +1,51 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboard');
 
 @section('content')
-    <div class="row">
-        <div class="col-12 col-lg-6 col-xl-3">
-            <div class="widget widget-tile">
-                <div class="chart sparkline" id="spark1"></div>
-                <div class="data-info">
-                    <div class="desc">New Users</div>
-                    <div class="value"><span class="indicator indicator-equal mdi mdi-chevron-right"></span><span
-                            class="number" data-toggle="counter" data-end="113">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 col-xl-3">
-            <div class="widget widget-tile">
-                <div class="chart sparkline" id="spark2"></div>
-                <div class="data-info">
-                    <div class="desc">Monthly Sales</div>
-                    <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span
-                            class="number" data-toggle="counter" data-end="80" data-suffix="%">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 col-xl-3">
-            <div class="widget widget-tile">
-                <div class="chart sparkline" id="spark3"></div>
-                <div class="data-info">
-                    <div class="desc">Impressions</div>
-                    <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span
-                            class="number" data-toggle="counter" data-end="532">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 col-xl-3">
-            <div class="widget widget-tile">
-                <div class="chart sparkline" id="spark4"></div>
-                <div class="data-info">
-                    <div class="desc">Downloads</div>
-                    <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-down"></span><span
-                            class="number" data-toggle="counter" data-end="113">0</span>
-                    </div>
+<div class="row">
+    <div class="col-12 col-lg-6 col-xl-3">
+        <div class="widget widget-tile">
+            <div class="icon mdi mdi-view-list-alt"></div>
+            <div class="data-info">
+                <div class="desc"><a href="{{route('dashboard.admin.categories.all')}}">Kategoriler</a></div>
+                <div class="value"><span class="number" data-toggle="counter"
+                        data-end="{{$categories->count()}}">{{$categories->count()}}</span>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-12 col-lg-6 col-xl-3">
+        <div class="widget widget-tile">
+            <div class="icon mdi mdi-view-list-alt"></div>
+            <div class="data-info">
+                <div class="desc"><a href="{{route('dashboard.admin.posts.all')}}">Toplam Yazı</a></div>
+                <div class="value"><span class="number" data-toggle="counter"
+                        data-end="{{$posts->count()}}">{{$posts->count()}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12 col-lg-6 col-xl-3">
+        <div class="widget widget-tile">
+            <div class="icon mdi mdi-email"></div>
+            <div class="data-info">
+                <div class="desc"><a href="{{route('dashboard.admin.newsletter.emails')}}">Kayıtlı Email</a></div>
+                <div class="value"><span class="number" data-toggle="counter"
+                        data-end="{{$emails->count()}}">{{$emails->count()}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6 col-xl-3">
+        <div class="widget widget-tile">
+            <div class="icon mdi mdi-settings"></div>
+            <div class="data-info">
+                <div class="desc"><a href="{{route('dashboard.admin.settings.edit')}}">Admin Ayarlar</a></div>
+                <div class="value"><span class="number" data-toggle="counter"
+                        data-end="{{$settings->count()}}">{{$settings->count()}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

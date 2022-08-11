@@ -8,6 +8,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 Route::get('/posts/{slug}', [PostController::class, 'post'])->name('post.show');
@@ -15,13 +16,12 @@ Route::get('/posts/{slug}', [PostController::class, 'post'])->name('post.show');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/user/dashboard', function () {
-    return view('dashboard.home');
-});
+Route::get('/user/dashboard', [DashboardController::class,'dashboard'])->middleware(['auth','admin']);
+
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'store'])->name('newsletter.email.store');
 
-Route::group(['prefix' => '/dashboard/admin', 'as' => 'dashboard.admin.'], function () {
+Route::group(['prefix' => '/dashboard/admin', 'as' => 'dashboard.admin.','middleware'=>['auth','admin']], function () {
     Route::group(['prefix' => '/categories', 'as' => 'categories.'], function () {
         Route::get('/', [CategoriesController::class, 'index'])->name('all');
         Route::get('/create', [CategoriesController::class, 'create'])->name('create');
@@ -50,6 +50,11 @@ Route::group(['prefix' => '/dashboard/admin', 'as' => 'dashboard.admin.'], funct
 
     Route::group(['prefix' => '/newsletter', 'as' => 'newsletter.'], function () {
         Route::get('/emails', [NewsletterController::class, 'emails'])->name('emails');
+    });
+
+      Route::group(['prefix' => '/users', 'as' => 'users.'], function () {
+        Route::get('/all', [DashboardController::class, 'allUsers'])->name('users.all');
+        Route::get('/status/{id}', [DashboardController::class,'toggleStatus'])->name('status.toggle');
     });
 
     Route::group(['prefix' => '/admin', 'as' => 'admin.'], function () {

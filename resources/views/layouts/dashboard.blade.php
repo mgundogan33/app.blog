@@ -68,7 +68,7 @@ $settings=Setting::latest()->first();
               <div class="left-sidebar-content">
                 <ul class="sidebar-elements">
                   <li class="divider">Menu</li>
-                  <li class="active"><a href="/user/dashboard"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
+                  <li class="active"><a href="/user/dashboard"><i class="icon mdi mdi-home"></i><span>Panel</span></a>
                   </li>
                   <li class="parent"><a href="#"><i class="icon mdi mdi-view-list-alt"></i><span>Kategori</span></a>
                     <ul class="sub-menu">
@@ -88,9 +88,16 @@ $settings=Setting::latest()->first();
                     </ul>
                   </li>
                   
-                  <li class="parent"><a href="#"><i class="icon mdi mdi-email-open"></i><span>Haber Bülteni</span></a>
+                  <li class="parent"><a href="#"><i class="icon mdi mdi-email-open"></i><span>Kayıtlı Email</span></a>
                     <ul class="sub-menu">
                       <li><a href="{{ route('dashboard.admin.newsletter.emails') }}">Emails</a>
+                      </li>                                                                                              
+                    </ul>
+                  </li> 
+
+                  <li class="parent"><a href="#"><i class="icon mdi mdi-accounts-alt"></i><span>Kullanıcılar</span></a>
+                    <ul class="sub-menu">
+                      <li><a href="{{ route('dashboard.admin.users.users.all')}}">Kullanıcılar</a>
                       </li>                                                                                              
                     </ul>
                   </li> 
