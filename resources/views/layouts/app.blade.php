@@ -31,9 +31,10 @@ $settings = App\Models\Setting::latest()->first();
 <body>
 
     <header class="header text-center">
+        <a href=" /user/dashboard " class="btn btn-space btn-dark active">Arka Panel</a>
+
         <h1 class="blog-name pt-lg-4 mb-0"><a class="no-text-decoration"
                 href="index.html">{{ $settings ? $settings->blog_author : '' }}</a></h1>
-
         <nav class="navbar navbar-expand-lg navbar-dark">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation"

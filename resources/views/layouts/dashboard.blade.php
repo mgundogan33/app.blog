@@ -39,6 +39,8 @@ $settings=Setting::latest()->first();
         <div class="container-fluid">
           
           <div class="page-title"><span>Admin Paneli</span></div>
+          <a href=" / " class="btn btn-space btn-dark active">Ön Panel</a>
+
           <div class="be-right-navbar">
             <ul class="nav navbar-nav float-right be-user-nav">
               <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ asset('storage/admin/profile/'.$settings->profile_image) }}" alt="Avatar"><span class="user-name">Túpac Amaru</span></a>
